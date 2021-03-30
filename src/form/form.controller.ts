@@ -15,10 +15,12 @@ export class FormController {
  
   //creating form
   @Post('/createForm')
+  @UseGuards(AuthGuard('jwt'))
   createForm(
     @Body(ValidationPipe) formCreateDto: FormCreateDto,
     @GetUser() user: User,
   ): Promise<Form> {
+    console.log(user,formCreateDto)
     return this.formService.createForm(formCreateDto, user);
   }
 }

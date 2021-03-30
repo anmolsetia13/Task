@@ -1,6 +1,6 @@
 export enum FormFields {
-    TextField,
-    CheckBox,
-    RadioButton,
-    DropDown,
+    TextField = 'TextField',
+    CheckBox = 'CheckBox',
+    RadioButton = 'RadioButton',
+    DropDown = 'DropDown',
   }

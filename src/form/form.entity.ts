@@ -2,8 +2,9 @@ import { BaseEntity, Column, Entity, ObjectIdColumn, OneToMany } from 'typeorm';
 import { ObjectId } from 'mongodb';
 import { FormFields } from './form.enum';
 import { User } from '../users/user.entity';
+import { IsIn } from 'class-validator';
 @Entity()
-export class Form extends BaseEntity {
+export class Form {
   @ObjectIdColumn()
   id: ObjectId;
  
@@ -14,9 +15,10 @@ export class Form extends BaseEntity {
   description: string;
  
   @Column()
-  formFields: FormFields;
+  @IsIn([FormFields.DropDown, FormFields.TextField, FormFields.RadioButton, FormFields.CheckBox])
+  type: FormFields;
  
-  @Column()
-  user: User; //One to many
+
+  
   
 }
